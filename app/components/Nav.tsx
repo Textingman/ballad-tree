@@ -47,12 +47,10 @@ export default function Nav() {
               href={item.href}
               className="font-mono-label px-4 py-2 rounded-full transition-all"
               style={{
-                color: 'rgba(255,255,255,0.75)',
+                color: 'white',
                 fontSize: '0.65rem',
                 letterSpacing: '0.1em',
               }}
-              onMouseEnter={e => (e.currentTarget.style.color = 'white')}
-              onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.75)')}
             >
               {item.label}
             </Link>
@@ -65,13 +63,13 @@ export default function Nav() {
             href="/signup"
             className="hidden md:inline-flex font-mono-label px-4 py-2 rounded-full transition-all"
             style={{
-              color: 'rgba(255,255,255,0.65)',
+              color: 'white',
               fontSize: '0.65rem',
               letterSpacing: '0.1em',
-              border: '1px solid rgba(255,255,255,0.2)',
+              border: '1px solid rgba(255,255,255,0.4)',
             }}
-            onMouseEnter={e => { e.currentTarget.style.color = 'white'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.5)'; }}
-            onMouseLeave={e => { e.currentTarget.style.color = 'rgba(255,255,255,0.65)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)'; }}
+            onMouseEnter={e => { e.currentTarget.style.borderColor = 'white'; }}
+            onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.4)'; }}
           >
             Employee Onboarding
           </Link>
