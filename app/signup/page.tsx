@@ -293,19 +293,6 @@ export default function SignupPage() {
                       Enter the Employer ID from your onboarding email to link your account to your company&apos;s wellness program.
                     </p>
 
-                    {/* Demo hint — shows the valid ID for testing */}
-                    <div
-                      className="rounded-xl p-3 mb-4 flex items-start gap-2"
-                      style={{ background: 'rgba(72,82,56,0.08)', border: '1px solid rgba(72,82,56,0.15)' }}
-                    >
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--olive)" strokeWidth="2" className="flex-shrink-0 mt-0.5">
-                        <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 5v6m0 4h.01" />
-                      </svg>
-                      <p style={{ fontSize: '0.72rem', color: 'var(--olive)', lineHeight: 1.5 }}>
-                        <strong>Demo:</strong> Your Employer ID for this session is <strong style={{ fontFamily: 'monospace' }}>{validEmployerId}</strong>. In production, this is provided by your HR team.
-                      </p>
-                    </div>
-
                     <div className="space-y-4">
                       <div>
                         <label className="font-mono-label block mb-2" style={{ color: 'var(--olive)', fontSize: '0.6rem' }}>
