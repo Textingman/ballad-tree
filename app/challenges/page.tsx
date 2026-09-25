@@ -274,7 +274,7 @@ export default function ChallengesPage() {
               style={{ background: 'linear-gradient(135deg, #16a34a, #059669)' }}>
               Set Up a Program
             </Link>
-            <Link href="/signup"
+            <Link href="/talk-to-sales"
               className="px-8 py-4 text-base font-semibold text-gray-700 rounded-2xl glass-button">
               Employee Sign Up
             </Link>

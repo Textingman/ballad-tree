@@ -26,7 +26,7 @@ export default function ProductPage() {
           <p style={{ color: 'rgba(245,243,235,0.65)', fontSize: '1.1rem', lineHeight: 1.8, maxWidth: '520px', margin: '0 auto 2.5rem' }}>
             Ballad Tree brings together budgeting, goal planning, debt management, investing guidance, and AI-powered advice — all in one calm, unified experience.
           </p>
-          <Link href="/signup" className="btn-primary">
+          <Link href="/talk-to-sales" className="btn-primary">
             Get Started
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M5 12h14M12 5l7 7-7 7" />
@@ -240,7 +240,7 @@ export default function ProductPage() {
             <em className="italic-accent">financial peace of mind?</em>
           </h2>
           <div className="flex flex-wrap items-center justify-center gap-4">
-            <Link href="/signup" className="btn-primary">
+            <Link href="/talk-to-sales" className="btn-primary">
               Get Started →
             </Link>
             <Link href="/for-employers" className="btn-outline">

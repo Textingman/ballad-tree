@@ -216,7 +216,7 @@ export default function IntegrationsPage() {
             Employees need a Company ID from their HR team to get started.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/signup"
+            <Link href="/talk-to-sales"
               className="px-8 py-4 text-base font-semibold text-white rounded-2xl shadow-xl hover:opacity-90 transition-all"
               style={{ background: 'linear-gradient(135deg, #16a34a, #059669)' }}>
               Employee Sign Up

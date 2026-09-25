@@ -26,7 +26,7 @@ export default function ForEmployersPage() {
           <p style={{ color: 'rgba(245,243,235,0.65)', fontSize: '1.1rem', lineHeight: 1.8, maxWidth: '520px', margin: '0 auto 2.5rem' }}>
             Trusted by forward-thinking companies to deliver measurable impact in employee financial wellness.
           </p>
-          <Link href="/signup" className="btn-primary">
+          <Link href="/talk-to-sales" className="btn-primary">
             Get Started
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M5 12h14M12 5l7 7-7 7" />
@@ -296,7 +296,7 @@ export default function ForEmployersPage() {
             Join companies delivering measurable financial wellness impact with Ballad Tree.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
-            <Link href="/signup" className="btn-forest">
+            <Link href="/talk-to-sales" className="btn-forest">
               Get Started
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M5 12h14M12 5l7 7-7 7" />
