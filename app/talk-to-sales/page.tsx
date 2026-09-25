@@ -59,22 +59,16 @@ export default function TalkToSalesPage() {
 
           <div className="relative z-10 space-y-6">
             {[
-              {
-                title: 'Personalized demo',
-                desc: 'See Ballad Tree in action with a walkthrough tailored to your team.',
-              },
-              {
-                title: 'Flexible pricing',
-                desc: 'Plans that scale with your organization — from 10 to 10,000 employees.',
-              },
-              {
-                title: 'Dedicated onboarding',
-                desc: 'Our success team handles setup, rollout, and ongoing engagement.',
-              },
+              { title: 'Personalized demo', desc: 'See Ballad Tree in action with a walkthrough tailored to your team.' },
+              { title: 'Flexible pricing', desc: 'Plans that scale with your organization — from 10 to 10,000 employees.' },
+              { title: 'Dedicated onboarding', desc: 'Our success team handles setup, rollout, and ongoing engagement.' },
             ].map((item, i) => (
-              <div key={i}>
-                <p style={{ color: 'var(--ivory)', fontWeight: 600, fontSize: '0.88rem', marginBottom: '0.2rem' }}>{item.title}</p>
-                <p style={{ color: 'rgba(245,243,235,0.5)', fontSize: '0.8rem', lineHeight: 1.6 }}>{item.desc}</p>
+              <div key={i} className="flex items-start gap-3">
+                <div className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0" style={{ background: 'rgba(245,243,235,0.4)' }} />
+                <div>
+                  <p style={{ color: 'var(--ivory)', fontWeight: 600, fontSize: '0.88rem', marginBottom: '0.2rem' }}>{item.title}</p>
+                  <p style={{ color: 'rgba(245,243,235,0.5)', fontSize: '0.8rem', lineHeight: 1.6 }}>{item.desc}</p>
+                </div>
               </div>
             ))}
           </div>
