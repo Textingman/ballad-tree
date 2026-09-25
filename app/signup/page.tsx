@@ -1,9 +1,19 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
+
+// Generate a random Employer ID for demo/validation purposes
+function generateEmployerId() {
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let id = 'BT-';
+  for (let i = 0; i < 4; i++) id += chars[Math.floor(Math.random() * chars.length)];
+  id += '-';
+  for (let i = 0; i < 4; i++) id += chars[Math.floor(Math.random() * chars.length)];
+  return id;
+}
 
 // Step indicator
 function StepIndicator({ current, total }: { current: number; total: number }) {
@@ -39,16 +49,49 @@ function StepIndicator({ current, total }: { current: number; total: number }) {
   );
 }
 
+// Email validation
+function isValidEmail(email: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
 export default function SignupPage() {
   const [step, setStep] = useState(0);
-  const [formData, setFormData] = useState({ name: '', email: '', employerId: '', phone: '', confirmPhone: '' });
+  const [formData, setFormData] = useState({ name: '', email: '', employerId: '', phone: '' });
+  const [emailError, setEmailError] = useState('');
+  const [employerIdError, setEmployerIdError] = useState('');
+  const [validEmployerId, setValidEmployerId] = useState('');
   const [accountNotifications, setAccountNotifications] = useState(false);
   const [customerCare, setCustomerCare] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success'>('idle');
 
+  // Generate a valid employer ID on mount (simulating what HR would provide)
+  useEffect(() => {
+    setValidEmployerId(generateEmployerId());
+  }, []);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+    if (name === 'email') setEmailError('');
+    if (name === 'employerId') setEmployerIdError('');
+  };
+
+  const handleStep1Continue = () => {
+    if (!formData.name) return;
+    if (!isValidEmail(formData.email)) {
+      setEmailError('Please enter a valid email address (e.g. jane@company.com)');
+      return;
+    }
+    setStep(1);
+  };
+
+  const handleStep2Continue = () => {
+    if (formData.employerId.trim() !== validEmployerId) {
+      setEmployerIdError(`Invalid Employer ID. Please check your onboarding email and try again.`);
+      return;
+    }
+    setStep(2);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -63,7 +106,7 @@ export default function SignupPage() {
   const steps = [
     { label: 'Your Info', desc: 'Tell us who you are' },
     { label: 'Employer', desc: 'Connect your employer' },
-    { label: 'Consent', desc: 'Review & agree' },
+    { label: 'AI Alerts', desc: 'Set up notifications' },
   ];
 
   return (
@@ -210,16 +253,19 @@ export default function SignupPage() {
                           className="w-full px-4 py-3 rounded-xl text-sm"
                           style={{
                             background: 'rgba(24,37,27,0.04)',
-                            border: '1px solid rgba(24,37,27,0.12)',
+                            border: `1px solid ${emailError ? '#dc2626' : 'rgba(24,37,27,0.12)'}`,
                             color: 'var(--charcoal)',
                             outline: 'none',
                             fontFamily: 'Inter, sans-serif',
                           }}
                         />
+                        {emailError && (
+                          <p style={{ fontSize: '0.72rem', color: '#dc2626', marginTop: '0.4rem' }}>{emailError}</p>
+                        )}
                       </div>
                       <button
                         type="button"
-                        onClick={() => formData.name && formData.email && setStep(1)}
+                        onClick={handleStep1Continue}
                         className="btn-forest w-full justify-center mt-2"
                         style={{ opacity: formData.name && formData.email ? 1 : 0.5 }}
                       >
@@ -244,8 +290,22 @@ export default function SignupPage() {
                       <em className="italic-accent">employer.</em>
                     </h1>
                     <p style={{ color: 'rgba(24,37,27,0.5)', fontSize: '0.85rem', lineHeight: 1.7, marginBottom: '2rem' }}>
-                      Enter the Employer ID provided by your HR or benefits team to link your account to your company&apos;s wellness program.
+                      Enter the Employer ID from your onboarding email to link your account to your company&apos;s wellness program.
                     </p>
+
+                    {/* Demo hint — shows the valid ID for testing */}
+                    <div
+                      className="rounded-xl p-3 mb-4 flex items-start gap-2"
+                      style={{ background: 'rgba(72,82,56,0.08)', border: '1px solid rgba(72,82,56,0.15)' }}
+                    >
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--olive)" strokeWidth="2" className="flex-shrink-0 mt-0.5">
+                        <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 5v6m0 4h.01" />
+                      </svg>
+                      <p style={{ fontSize: '0.72rem', color: 'var(--olive)', lineHeight: 1.5 }}>
+                        <strong>Demo:</strong> Your Employer ID for this session is <strong style={{ fontFamily: 'monospace' }}>{validEmployerId}</strong>. In production, this is provided by your HR team.
+                      </p>
+                    </div>
+
                     <div className="space-y-4">
                       <div>
                         <label className="font-mono-label block mb-2" style={{ color: 'var(--olive)', fontSize: '0.6rem' }}>
@@ -257,19 +317,24 @@ export default function SignupPage() {
                           required
                           value={formData.employerId}
                           onChange={handleChange}
-                          placeholder="e.g. BT-ACME-2024"
+                          placeholder={validEmployerId}
                           className="w-full px-4 py-3 rounded-xl text-sm"
                           style={{
                             background: 'rgba(24,37,27,0.04)',
-                            border: '1px solid rgba(24,37,27,0.12)',
+                            border: `1px solid ${employerIdError ? '#dc2626' : 'rgba(24,37,27,0.12)'}`,
                             color: 'var(--charcoal)',
                             outline: 'none',
-                            fontFamily: 'Inter, sans-serif',
+                            fontFamily: 'JetBrains Mono, monospace',
+                            letterSpacing: '0.05em',
                           }}
                         />
-                        <p style={{ fontSize: '0.7rem', color: 'rgba(24,37,27,0.4)', marginTop: '0.4rem' }}>
-                          Find your Employer ID in your onboarding email or ask your HR team.
-                        </p>
+                        {employerIdError ? (
+                          <p style={{ fontSize: '0.72rem', color: '#dc2626', marginTop: '0.4rem' }}>{employerIdError}</p>
+                        ) : (
+                          <p style={{ fontSize: '0.7rem', color: 'rgba(24,37,27,0.4)', marginTop: '0.4rem' }}>
+                            Find your Employer ID in your onboarding email or ask your HR team.
+                          </p>
+                        )}
                       </div>
                       <div className="flex gap-3">
                         <button
@@ -288,7 +353,7 @@ export default function SignupPage() {
                         </button>
                         <button
                           type="button"
-                          onClick={() => formData.employerId && setStep(2)}
+                          onClick={handleStep2Continue}
                           className="btn-forest flex-1 justify-center"
                           style={{ opacity: formData.employerId ? 1 : 0.5 }}
                         >
@@ -302,45 +367,48 @@ export default function SignupPage() {
                   </>
                 )}
 
-                {/* ── STEP 2: Consent ── */}
+                {/* ── STEP 2: AI Alerts ── */}
                 {step === 2 && (
                   <form onSubmit={handleSubmit}>
                     <p className="font-mono-label mb-4" style={{ color: 'var(--olive)', fontSize: '0.65rem' }}>
-                      Step 3 of 3 — Review & Agree
+                      Step 3 of 3 — AI Financial Alerts
                     </p>
                     <h1 className="headline-md mb-2" style={{ color: 'var(--forest)', fontSize: '1.75rem' }}>
-                      Almost done.
+                      Stay informed
                       <br />
-                      <em className="italic-accent">Review & confirm.</em>
+                      <em className="italic-accent">by your AI advisor.</em>
                     </h1>
-                    <p style={{ color: 'rgba(24,37,27,0.5)', fontSize: '0.85rem', lineHeight: 1.7, marginBottom: '2rem' }}>
-                      Review your information and agree to the terms to complete your account setup.
+                    <p style={{ color: 'rgba(24,37,27,0.5)', fontSize: '0.85rem', lineHeight: 1.7, marginBottom: '1.5rem' }}>
+                      Ballad AI can send you personalized financial insights, goal reminders, and spending alerts directly to your phone — so you never miss an important moment in your financial journey.
                     </p>
 
-                    {/* Summary */}
+                    {/* What you'll receive */}
                     <div
-                      className="rounded-xl p-4 mb-6 space-y-2"
-                      style={{ background: 'rgba(24,37,27,0.04)', border: '1px solid rgba(24,37,27,0.08)' }}
+                      className="rounded-xl p-4 mb-5"
+                      style={{ background: 'rgba(72,82,56,0.06)', border: '1px solid rgba(72,82,56,0.12)' }}
                     >
-                      <p className="font-mono-label mb-3" style={{ color: 'rgba(24,37,27,0.35)', fontSize: '0.6rem' }}>
-                        Account Summary
+                      <p className="font-mono-label mb-3" style={{ color: 'var(--olive)', fontSize: '0.6rem' }}>
+                        What Ballad AI will text you
                       </p>
-                      {[
-                        { label: 'Name', value: formData.name },
-                        { label: 'Email', value: formData.email },
-                        { label: 'Employer ID', value: formData.employerId },
-                      ].map(item => (
-                        <div key={item.label} className="flex justify-between items-center">
-                          <span className="font-mono-label" style={{ color: 'rgba(24,37,27,0.4)', fontSize: '0.6rem' }}>{item.label}</span>
-                          <span style={{ color: 'var(--charcoal)', fontSize: '0.85rem', fontWeight: 500 }}>{item.value}</span>
-                        </div>
-                      ))}
+                      <div className="space-y-2">
+                        {[
+                          { icon: '💡', text: 'Personalized financial insights based on your goals' },
+                          { icon: '🎯', text: 'Goal milestone alerts when you hit savings targets' },
+                          { icon: '📊', text: 'Weekly spending summaries and budget reminders' },
+                          { icon: '🔔', text: 'Account notifications and important updates' },
+                        ].map((item, i) => (
+                          <div key={i} className="flex items-start gap-2">
+                            <span style={{ fontSize: '0.85rem' }}>{item.icon}</span>
+                            <p style={{ fontSize: '0.78rem', color: 'rgba(24,37,27,0.65)', lineHeight: 1.5 }}>{item.text}</p>
+                          </div>
+                        ))}
+                      </div>
                     </div>
 
-                    {/* Phone for SMS */}
-                    <div className="mb-4">
+                    {/* Phone */}
+                    <div className="mb-5">
                       <label className="font-mono-label block mb-2" style={{ color: 'var(--olive)', fontSize: '0.6rem' }}>
-                        Phone Number *
+                        Mobile Phone Number *
                       </label>
                       <input
                         type="tel"
@@ -358,6 +426,9 @@ export default function SignupPage() {
                           fontFamily: 'Inter, sans-serif',
                         }}
                       />
+                      <p style={{ fontSize: '0.7rem', color: 'rgba(24,37,27,0.4)', marginTop: '0.4rem' }}>
+                        This is the number Ballad AI will use to send you alerts.
+                      </p>
                     </div>
 
                     {/* Terms */}
