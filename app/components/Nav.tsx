@@ -41,7 +41,6 @@ export default function Nav() {
           {[
             { label: 'Product', href: '/product' },
             { label: 'For Employers', href: '/for-employers' },
-            { label: 'Talk to Sales', href: '/talk-to-sales' },
           ].map(item => (
             <Link
               key={item.href}
@@ -60,14 +59,28 @@ export default function Nav() {
           ))}
         </div>
 
-        {/* CTA */}
-        <div className="flex items-center gap-3">
+        {/* CTAs */}
+        <div className="flex items-center gap-2">
           <Link
             href="/signup"
+            className="hidden md:inline-flex font-mono-label px-4 py-2 rounded-full transition-all"
+            style={{
+              color: 'rgba(255,255,255,0.65)',
+              fontSize: '0.65rem',
+              letterSpacing: '0.1em',
+              border: '1px solid rgba(255,255,255,0.2)',
+            }}
+            onMouseEnter={e => { e.currentTarget.style.color = 'white'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.5)'; }}
+            onMouseLeave={e => { e.currentTarget.style.color = 'rgba(255,255,255,0.65)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)'; }}
+          >
+            Employee Onboarding
+          </Link>
+          <Link
+            href="/talk-to-sales"
             className="hidden md:inline-flex btn-primary"
             style={{ fontSize: '0.65rem' }}
           >
-            Get Started
+            Talk to Sales
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
