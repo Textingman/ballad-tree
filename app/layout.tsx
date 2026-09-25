@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Team Cross Fit — Connected Employee Wellness",
-  description: "Team Cross Fit connects the health apps and devices your employees already use with company wellness programs, challenges, and rewards.",
-  keywords: "employee wellness, workplace wellness, health app integration, wellness challenges, Apple Health, fitness tracker, employee health",
+  title: "Ballad Tree",
+  description: "Ballad Tree — balladtree.com",
+  keywords: "ballad tree, balladtree",
   openGraph: {
-    title: "Team Cross Fit — Connected Employee Wellness",
-    description: "Connect the health apps your employees already use. Build wellness programs people actually participate in.",
-    siteName: "Team Cross Fit",
+    title: "Ballad Tree",
+    description: "Ballad Tree — balladtree.com",
+    siteName: "Ballad Tree",
     locale: "en_US",
     type: "website",
   },
