@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
@@ -8,19 +9,15 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-12 mb-16">
           {/* Brand */}
           <div className="md:col-span-2">
-            <div className="flex items-center gap-2 mb-6">
-              <div
-                className="w-8 h-8 rounded-full flex items-center justify-center"
-                style={{ background: 'rgba(245,243,235,0.15)', border: '1px solid rgba(245,243,235,0.2)' }}
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                  <path d="M12 2C8 2 4 6 4 10c0 5 8 12 8 12s8-7 8-12c0-4-4-8-8-8z" fill="#F5F3EB" opacity="0.9" />
-                  <circle cx="12" cy="10" r="3" fill="#F5F3EB" opacity="0.5" />
-                </svg>
-              </div>
-              <span className="font-mono-label" style={{ color: 'var(--ivory)', fontSize: '0.75rem' }}>
-                Ballad Tree
-              </span>
+            <div className="mb-6">
+              <Image
+                src="/logo.png"
+                alt="Ballad Tree"
+                width={140}
+                height={40}
+                className="h-9 w-auto object-contain"
+                style={{ filter: 'brightness(0) invert(1)', opacity: 0.85 }}
+              />
             </div>
             <p
               className="headline-md italic-accent mb-6"
@@ -40,7 +37,6 @@ export default function Footer() {
             </p>
             <ul className="space-y-3">
               {[
-                { label: 'How It Works', href: '/how-it-works' },
                 { label: 'For Employers', href: '/for-employers' },
                 { label: 'Product', href: '/product' },
                 { label: 'Get Started', href: '/signup' },

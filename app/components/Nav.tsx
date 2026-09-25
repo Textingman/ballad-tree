@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -23,22 +24,16 @@ export default function Nav() {
         }}
       >
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 group">
-          <div
-            className="w-7 h-7 rounded-full flex items-center justify-center"
-            style={{ background: 'rgba(255,255,255,0.2)', border: '1px solid rgba(255,255,255,0.3)' }}
-          >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-              <path d="M12 2C8 2 4 6 4 10c0 5 8 12 8 12s8-7 8-12c0-4-4-8-8-8z" fill="white" opacity="0.9" />
-              <circle cx="12" cy="10" r="3" fill="white" opacity="0.6" />
-            </svg>
-          </div>
-          <span
-            className="font-mono-label text-white"
-            style={{ fontSize: '0.75rem', letterSpacing: '0.08em' }}
-          >
-            Ballad Tree
-          </span>
+        <Link href="/" className="flex items-center group">
+          <Image
+            src="/logo.png"
+            alt="Ballad Tree"
+            width={140}
+            height={40}
+            className="h-9 w-auto object-contain"
+            style={{ filter: 'brightness(0) invert(1)' }}
+            priority
+          />
         </Link>
 
         {/* Desktop Nav */}
