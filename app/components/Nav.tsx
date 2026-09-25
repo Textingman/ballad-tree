@@ -46,7 +46,6 @@ export default function Nav() {
           {[
             { label: 'Product', href: '/product' },
             { label: 'For Employers', href: '/for-employers' },
-            { label: 'How It Works', href: '/how-it-works' },
           ].map(item => (
             <Link
               key={item.href}
@@ -116,7 +115,6 @@ export default function Nav() {
           {[
             { label: 'Product', href: '/product' },
             { label: 'For Employers', href: '/for-employers' },
-            { label: 'How It Works', href: '/how-it-works' },
           ].map(item => (
             <Link
               key={item.href}

@@ -1,261 +1,251 @@
 'use client';
+
+import Link from 'next/link';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
-import Link from 'next/link';
 
 export default function ProductPage() {
   return (
-    <div className="min-h-screen bg-white">
-      <div className="fixed inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
-        <div className="absolute top-[-10%] left-[-5%] w-[600px] h-[600px] blob opacity-30"
-          style={{ background: 'radial-gradient(circle, rgba(134,239,172,0.4) 0%, transparent 70%)' }} />
-        <div className="absolute top-[30%] right-[-10%] w-[500px] h-[500px] blob opacity-25"
-          style={{ background: 'radial-gradient(circle, rgba(147,197,253,0.4) 0%, transparent 70%)' }} />
-      </div>
-
+    <div style={{ background: 'var(--ivory)', color: 'var(--charcoal)' }}>
       <Nav />
 
-      {/* Hero */}
-      <section className="pt-32 pb-20 px-6 relative" style={{ zIndex: 1 }}>
+      {/* ── HERO ── */}
+      <section
+        className="relative pt-48 pb-28 px-6"
+        style={{ background: 'var(--forest)' }}
+      >
         <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium text-green-700 mb-8"
-            style={{ background: 'rgba(134,239,172,0.2)', border: '1px solid rgba(134,239,172,0.4)' }}>
-            <span>⚡</span>
-            Product Overview
-          </div>
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 tracking-tight mb-6">
-            The connected wellness platform
-            <br /><span className="gradient-text-green">built for how people actually live.</span>
-          </h1>
-          <p className="text-xl text-gray-500 max-w-2xl mx-auto mb-10">
-            Team Cross Fit bridges the gap between the health apps employees already use and the wellness programs companies want to run — without friction, manual logging, or privacy concerns.
+          <p className="font-mono-label mb-8" style={{ color: 'rgba(245,243,235,0.45)', fontSize: '0.65rem' }}>
+            The Product
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/signup"
-              className="px-8 py-4 text-base font-semibold text-white rounded-2xl shadow-xl hover:opacity-90 transition-all"
-              style={{ background: 'linear-gradient(135deg, #16a34a, #059669)' }}>
-              Get Started
-            </Link>
-            <Link href="/for-employers"
-              className="px-8 py-4 text-base font-semibold text-gray-700 rounded-2xl glass-button">
-              For HR Teams
-            </Link>
-          </div>
+          <h1 className="headline-xl text-white mb-8">
+            One platform for
+            <br />
+            <em className="italic-accent">every financial journey.</em>
+          </h1>
+          <p style={{ color: 'rgba(245,243,235,0.65)', fontSize: '1.1rem', lineHeight: 1.8, maxWidth: '520px', margin: '0 auto 2.5rem' }}>
+            Ballad Tree brings together budgeting, goal planning, debt management, investing guidance, and AI-powered advice — all in one calm, unified experience.
+          </p>
+          <Link href="/signup" className="btn-primary">
+            Get Started
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </Link>
         </div>
       </section>
 
-      {/* Core product pillars */}
-      <section className="py-20 px-6 relative" style={{ zIndex: 1 }}>
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 tracking-tight mb-4">
-              One platform. Three experiences.
-            </h2>
-            <p className="text-lg text-gray-500">
-              Team Cross Fit works for employees, HR teams, and the whole organization.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              {
-                icon: '📱',
-                title: 'For Employees',
-                color: '#16a34a',
-                desc: 'Connect your health apps, join challenges, track progress, and earn rewards — without changing how you already track your health.',
-                features: ['Apple Health integration', 'Personal wellness dashboard', 'Challenge participation', 'Points & rewards', 'Movement streaks', 'Team leaderboards'],
-                cta: { label: 'Employee Sign Up', href: '/signup' },
-              },
-              {
-                icon: '🏢',
-                title: 'For HR Teams',
-                color: '#0891b2',
-                desc: 'Launch wellness programs, run challenges, distribute rewards, and understand engagement — all without accessing individual health data.',
-                features: ['Company program setup', 'Challenge management', 'Aggregate analytics', 'Reward distribution', 'Employee onboarding', 'Privacy-first reporting'],
-                cta: { label: 'HR Team Setup', href: '/for-employers' },
-              },
-              {
-                icon: '📊',
-                title: 'For Organizations',
-                color: '#7c3aed',
-                desc: 'Build a culture of health across departments, locations, and remote teams with programs that scale with your organization.',
-                features: ['Multi-team challenges', 'Department segmentation', 'Participation trends', 'ROI reporting', 'Benefits integration', 'Custom programs'],
-                cta: { label: 'Talk to Our Team', href: '/contact' },
-              },
-            ].map(pillar => (
-              <div key={pillar.title} className="glass-card p-8 flex flex-col">
-                <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-3xl mb-6"
-                  style={{ background: `${pillar.color}15` }}>
-                  {pillar.icon}
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-3">{pillar.title}</h3>
-                <p className="text-gray-500 mb-6 leading-relaxed">{pillar.desc}</p>
-                <ul className="space-y-2 mb-8 flex-1">
-                  {pillar.features.map(f => (
-                    <li key={f} className="flex items-center gap-2 text-sm text-gray-600">
-                      <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: pillar.color }} />
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-                <Link href={pillar.cta.href}
-                  className="block text-center py-3 rounded-xl text-sm font-semibold text-white transition-all hover:opacity-90"
-                  style={{ background: `linear-gradient(135deg, ${pillar.color}, ${pillar.color}cc)` }}>
-                  {pillar.cta.label}
-                </Link>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Key differentiators */}
-      <section className="py-20 px-6 relative" style={{ zIndex: 1 }}>
+      {/* ── CORE FEATURES ── */}
+      <section className="py-28 px-6" style={{ background: 'var(--ivory)' }}>
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 tracking-tight mb-4">
-              Why Team Cross Fit is different.
+          <div className="text-center mb-20">
+            <p className="font-mono-label mb-6" style={{ color: 'var(--olive)', fontSize: '0.65rem' }}>
+              Core Features
+            </p>
+            <h2 className="headline-lg" style={{ color: 'var(--forest)' }}>
+              Everything employees need
+              <br />
+              <em className="italic-accent">to feel financially secure.</em>
             </h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
             {[
               {
-                icon: '🔗',
-                title: 'Connected, not manual',
-                desc: 'Employees don\'t log workouts manually. Team Cross Fit connects with Apple Health and compatible devices so eligible activity counts automatically. No friction. No behavior change required.',
+                title: 'AI Financial Advisor',
+                desc: 'Employees can ask Ballad AI anything — how to pay off debt faster, whether they can afford a home, how to build an emergency fund. They get personalized, actionable answers based on their actual financial situation.',
+                icon: (
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 5v6m0 4h.01" />
+                  </svg>
+                ),
               },
               {
-                icon: '🔐',
-                title: 'Privacy by design',
-                desc: 'Employees choose what they share. Employers see aggregate wellness engagement — never individual health records. This isn\'t a compliance checkbox. It\'s how the product is built.',
+                title: 'Financial Dashboard',
+                desc: 'A clear, calm view of net worth, spending, savings progress, and financial goals. Employees see exactly where they stand and what to do next — without feeling overwhelmed.',
+                icon: (
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <rect x="3" y="3" width="7" height="7" rx="1" />
+                    <rect x="14" y="3" width="7" height="7" rx="1" />
+                    <rect x="3" y="14" width="7" height="7" rx="1" />
+                    <rect x="14" y="14" width="7" height="7" rx="1" />
+                  </svg>
+                ),
               },
               {
-                icon: '🏃',
-                title: 'Meets employees where they are',
-                desc: 'Your employees already track their steps, workouts, and activity. Team Cross Fit connects to what they\'re already doing and makes it count toward workplace wellness goals.',
+                title: 'Goal Planning & Tracking',
+                desc: 'Set goals for emergency funds, debt payoff, home buying, retirement, and more. Ballad Tree builds a personalized plan and tracks progress automatically — adjusting as life changes.',
+                icon: (
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path d="M9 11l3 3L22 4" />
+                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+                  </svg>
+                ),
               },
               {
-                icon: '⚡',
-                title: 'Zero IT overhead',
-                desc: 'HR teams set up programs in under 30 minutes. Employees self-enroll with a Company ID. No enterprise software procurement. No IT tickets. No training required.',
+                title: 'Spending Insights',
+                desc: 'Automatic categorization of spending with clear trends and patterns. Employees understand where their money goes and get AI-powered suggestions for where to optimize.',
+                icon: (
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
+                    <polyline points="16 7 22 7 22 13" />
+                  </svg>
+                ),
               },
               {
-                icon: '🏆',
-                title: 'Challenges that actually engage',
-                desc: 'Step challenges, movement streaks, team competitions, and wellness goals that employees actually want to participate in — because they\'re connected to real activity.',
+                title: 'Debt Management',
+                desc: 'Visualize all debt in one place — student loans, credit cards, auto loans. Get AI-generated payoff strategies (avalanche, snowball, or hybrid) tailored to each employee\'s situation.',
+                icon: (
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M12 8v4l3 3" />
+                  </svg>
+                ),
               },
               {
-                icon: '📊',
-                title: 'Insights without overreach',
-                desc: 'Understand which programs drive participation, which teams are most engaged, and where to focus — without needing access to sensitive personal health information.',
+                title: 'Retirement & Investing Guidance',
+                desc: 'Help employees understand their 401k, IRA, and investment options. Ballad AI explains complex concepts in plain language and helps employees make confident decisions.',
+                icon: (
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                    <path d="M2 17l10 5 10-5" />
+                    <path d="M2 12l10 5 10-5" />
+                  </svg>
+                ),
               },
-            ].map(item => (
-              <div key={item.title} className="glass-card p-6">
-                <div className="flex items-start gap-4">
-                  <span className="text-2xl flex-shrink-0">{item.icon}</span>
-                  <div>
-                    <h3 className="font-bold text-gray-900 mb-2">{item.title}</h3>
-                    <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
-                  </div>
+            ].map((feature, i) => (
+              <div key={i} className="card-feature p-8">
+                <div
+                  className="w-11 h-11 rounded-2xl flex items-center justify-center mb-5"
+                  style={{ background: 'rgba(24,37,27,0.08)', color: 'var(--forest)' }}
+                >
+                  {feature.icon}
                 </div>
+                <h3
+                  className="font-serif mb-3"
+                  style={{ fontSize: '1.2rem', fontWeight: 600, color: 'var(--forest)' }}
+                >
+                  {feature.title}
+                </h3>
+                <p style={{ color: 'rgba(24,37,27,0.6)', fontSize: '0.9rem', lineHeight: 1.75 }}>
+                  {feature.desc}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Feature deep dives */}
-      <section className="py-20 px-6 relative" style={{ zIndex: 1 }}>
-        <div className="max-w-5xl mx-auto space-y-20">
-
-          {/* Integrations */}
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+      {/* ── PRIVACY SECTION ── */}
+      <section className="py-28 px-6" style={{ background: 'var(--white)' }}>
+        <div className="max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
-              <p className="text-xs font-semibold text-green-600 uppercase tracking-widest mb-3">Integrations</p>
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Connect the apps your employees already use.</h2>
-              <p className="text-gray-500 mb-6">Apple Health is our primary integration. Employees connect once and eligible activity automatically contributes to wellness goals and challenges.</p>
-              <Link href="/integrations" className="inline-flex items-center gap-2 text-sm font-semibold text-green-600 hover:text-green-700">
-                See all integrations →
-              </Link>
+              <p className="font-mono-label mb-6" style={{ color: 'var(--olive)', fontSize: '0.65rem' }}>
+                Privacy First
+              </p>
+              <h2 className="headline-lg mb-6" style={{ color: 'var(--forest)' }}>
+                Financial data is
+                <br />
+                <em className="italic-accent">deeply personal.</em>
+              </h2>
+              <p style={{ color: 'rgba(24,37,27,0.6)', fontSize: '1rem', lineHeight: 1.8, marginBottom: '2rem' }}>
+                Ballad Tree is built with privacy at its core. Employees control exactly what they connect and share. Their individual financial data is never visible to their employer.
+              </p>
+              <div className="space-y-5">
+                {[
+                  { title: 'Bank-level encryption', desc: 'All financial data is encrypted in transit and at rest.' },
+                  { title: 'Employee-controlled access', desc: 'Employees connect accounts themselves and can disconnect anytime.' },
+                  { title: 'Employer sees only aggregates', desc: 'Companies see program engagement metrics — never individual data.' },
+                  { title: 'No data selling', desc: 'We never sell or share employee financial data with third parties.' },
+                ].map(item => (
+                  <div key={item.title} className="flex items-start gap-4">
+                    <div
+                      className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
+                      style={{ background: 'rgba(24,37,27,0.1)' }}
+                    >
+                      <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" strokeWidth="3">
+                        <path d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p style={{ fontWeight: 600, color: 'var(--forest)', fontSize: '0.9rem', marginBottom: '0.2rem' }}>{item.title}</p>
+                      <p style={{ color: 'rgba(24,37,27,0.55)', fontSize: '0.85rem' }}>{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="glass-card p-6">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-2xl flex items-center justify-center"
-                  style={{ background: 'linear-gradient(135deg, #ff2d55, #ff6b6b)' }}>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
-                    <path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/>
+
+            {/* Privacy visual */}
+            <div
+              className="rounded-2xl p-8"
+              style={{ background: 'var(--ivory)', border: '1px solid rgba(24,37,27,0.1)' }}
+            >
+              <div className="flex items-center gap-3 mb-6">
+                <div
+                  className="w-10 h-10 rounded-2xl flex items-center justify-center"
+                  style={{ background: 'var(--forest)' }}
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                   </svg>
                 </div>
                 <div>
-                  <p className="font-semibold text-gray-900">Apple Health</p>
-                  <p className="text-xs text-green-600">Primary Integration</p>
+                  <p style={{ fontWeight: 600, color: 'var(--forest)', fontSize: '0.9rem' }}>Your Financial Data</p>
+                  <p className="font-mono-label" style={{ color: 'var(--olive)', fontSize: '0.6rem' }}>You control what you share</p>
                 </div>
               </div>
-              <div className="grid grid-cols-2 gap-2">
-                {['Steps', 'Workouts', 'Active Energy', 'Walking & Running', 'Exercise Activity', 'Movement'].map(item => (
-                  <div key={item} className="flex items-center gap-2 p-2 rounded-lg text-xs text-gray-600" style={{ background: 'rgba(0,0,0,0.03)' }}>
-                    <div className="w-1.5 h-1.5 rounded-full bg-green-500" />
-                    {item}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
 
-          {/* Challenges */}
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="glass-card p-6 order-2 md:order-1">
               <div className="space-y-3">
                 {[
-                  { name: '10K Step Challenge', progress: 84, pts: '+100 pts', color: '#16a34a' },
-                  { name: 'Movement Streak', progress: 80, pts: '+250 pts', color: '#f97316' },
-                  { name: 'Wellness Month', progress: 73, pts: '+500 pts', color: '#7c3aed' },
-                ].map(c => (
-                  <div key={c.name} className="p-4 rounded-2xl" style={{ background: 'rgba(0,0,0,0.03)' }}>
-                    <div className="flex justify-between items-center mb-2">
-                      <p className="text-sm font-semibold text-gray-900">{c.name}</p>
-                      <span className="text-xs font-bold" style={{ color: c.color }}>{c.pts}</span>
+                  { label: 'Bank accounts', connected: true },
+                  { label: 'Spending categories', connected: true },
+                  { label: 'Savings goals', connected: true },
+                  { label: 'Investment accounts', connected: false },
+                  { label: 'Credit score', connected: false },
+                ].map(item => (
+                  <div
+                    key={item.label}
+                    className="flex items-center justify-between p-3 rounded-xl"
+                    style={{ background: 'rgba(24,37,27,0.04)', border: '1px solid rgba(24,37,27,0.08)' }}
+                  >
+                    <span style={{ fontSize: '0.85rem', color: 'var(--charcoal)', fontWeight: 500 }}>{item.label}</span>
+                    <div
+                      className="w-9 h-5 rounded-full flex items-center px-0.5 transition-all"
+                      style={{ background: item.connected ? 'var(--olive)' : 'rgba(24,37,27,0.15)' }}
+                    >
+                      <div
+                        className="w-4 h-4 bg-white rounded-full shadow-sm transition-all"
+                        style={{ transform: item.connected ? 'translateX(16px)' : 'translateX(0)' }}
+                      />
                     </div>
-                    <div className="w-full bg-gray-100 rounded-full h-1.5">
-                      <div className="h-1.5 rounded-full" style={{ width: `${c.progress}%`, background: c.color }} />
-                    </div>
-                    <p className="text-xs text-gray-400 mt-1">{c.progress}% complete</p>
                   </div>
                 ))}
               </div>
-            </div>
-            <div className="order-1 md:order-2">
-              <p className="text-xs font-semibold text-orange-600 uppercase tracking-widest mb-3">Challenges</p>
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Wellness challenges that drive real participation.</h2>
-              <p className="text-gray-500 mb-6">Step challenges, movement streaks, team competitions, and monthly wellness goals — all connected to real activity data so employees don&apos;t have to manually track anything.</p>
-              <Link href="/challenges" className="inline-flex items-center gap-2 text-sm font-semibold text-orange-600 hover:text-orange-700">
-                Explore challenges →
-              </Link>
+              <p style={{ fontSize: '0.72rem', color: 'rgba(24,37,27,0.4)', marginTop: '1rem', textAlign: 'center' }}>
+                Conceptual — employees control their own permissions
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 px-6 relative" style={{ zIndex: 1 }}>
+      {/* ── CTA ── */}
+      <section className="py-28 px-6" style={{ background: 'var(--forest)' }}>
         <div className="max-w-3xl mx-auto text-center">
-          <div className="glass-card p-12" style={{ background: 'linear-gradient(135deg, rgba(240,253,244,0.9), rgba(240,249,255,0.9))' }}>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Ready to get started?</h2>
-            <p className="text-lg text-gray-500 mb-8">
-              Employees can join with a Company ID. HR teams can set up a program in under 30 minutes.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link href="/signup"
-                className="px-8 py-4 text-base font-semibold text-white rounded-2xl shadow-xl hover:opacity-90 transition-all"
-                style={{ background: 'linear-gradient(135deg, #16a34a, #059669)' }}>
-                Employee Sign Up
-              </Link>
-              <Link href="/for-employers"
-                className="px-8 py-4 text-base font-semibold text-gray-700 rounded-2xl glass-button">
-                HR Team Setup
-              </Link>
-            </div>
+          <h2 className="headline-lg text-white mb-8">
+            Ready to give your team
+            <br />
+            <em className="italic-accent">financial peace of mind?</em>
+          </h2>
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <Link href="/signup" className="btn-primary">
+              Get Started →
+            </Link>
+            <Link href="/for-employers" className="btn-outline">
+              For Employers
+            </Link>
           </div>
         </div>
       </section>

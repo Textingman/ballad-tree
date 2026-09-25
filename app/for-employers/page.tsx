@@ -1,183 +1,247 @@
 'use client';
+
+import Link from 'next/link';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
-import Link from 'next/link';
 
 export default function ForEmployersPage() {
   return (
-    <div className="min-h-screen bg-white">
-      <div className="fixed inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
-        <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] blob opacity-30"
-          style={{ background: 'radial-gradient(circle, rgba(134,239,172,0.4) 0%, transparent 70%)' }} />
-        <div className="absolute bottom-[10%] left-[-5%] w-[400px] h-[400px] blob opacity-25"
-          style={{ background: 'radial-gradient(circle, rgba(147,197,253,0.4) 0%, transparent 70%)' }} />
-      </div>
-
+    <div style={{ background: 'var(--ivory)', color: 'var(--charcoal)' }}>
       <Nav />
 
-      {/* Hero */}
-      <section className="pt-32 pb-20 px-6 relative" style={{ zIndex: 1 }}>
+      {/* ── HERO ── */}
+      <section
+        className="relative pt-48 pb-28 px-6"
+        style={{ background: 'var(--forest)' }}
+      >
         <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium text-blue-700 mb-8"
-            style={{ background: 'rgba(147,197,253,0.2)', border: '1px solid rgba(147,197,253,0.4)' }}>
-            <span>🏢</span>
-            For HR & People Teams
-          </div>
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 tracking-tight mb-6">
-            Build a wellness program
-            <br /><span style={{ background: 'linear-gradient(135deg, #16a34a, #0891b2)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-              your employees actually use.
-            </span>
-          </h1>
-          <p className="text-xl text-gray-500 max-w-2xl mx-auto mb-10">
-            Team Cross Fit gives HR and people teams the tools to launch connected wellness programs, run challenges, and understand engagement — without adding administrative burden.
+          <p className="font-mono-label mb-8" style={{ color: 'rgba(245,243,235,0.45)', fontSize: '0.65rem' }}>
+            For Employers
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/contact"
-              className="px-8 py-4 text-base font-semibold text-white rounded-2xl shadow-xl hover:opacity-90 transition-all"
-              style={{ background: 'linear-gradient(135deg, #16a34a, #059669)' }}>
-              Talk to Our Team
-            </Link>
-            <Link href="/signup"
-              className="px-8 py-4 text-base font-semibold text-gray-700 rounded-2xl glass-button">
-              Employee Sign Up
-            </Link>
-          </div>
+          <h1 className="headline-xl text-white mb-8">
+            <em className="italic-accent">Why</em> employers choose
+            <br />
+            Ballad Tree
+          </h1>
+          <p style={{ color: 'rgba(245,243,235,0.65)', fontSize: '1.1rem', lineHeight: 1.8, maxWidth: '520px', margin: '0 auto 2.5rem' }}>
+            Trusted by forward-thinking companies to deliver measurable impact in employee financial wellness.
+          </p>
+          <Link href="/signup" className="btn-primary">
+            Get Started
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </Link>
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="py-16 px-6 relative" style={{ zIndex: 1 }}>
-        <div className="max-w-5xl mx-auto">
-          <div className="glass-card p-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-              {[
-                { value: '68%', label: 'Average challenge participation rate' },
-                { value: '3x', label: 'More engagement vs. traditional programs' },
-                { value: '91%', label: 'Employee satisfaction with connected wellness' },
-                { value: '0', label: 'Manual data entry required from employees' },
-              ].map(stat => (
-                <div key={stat.label}>
-                  <p className="text-4xl font-black mb-2" style={{ background: 'linear-gradient(135deg, #16a34a, #059669)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-                    {stat.value}
-                  </p>
-                  <p className="text-sm text-gray-500">{stat.label}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* How it works for HR */}
-      <section className="py-20 px-6 relative" style={{ zIndex: 1 }}>
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 tracking-tight mb-4">
-              Simple to set up. Easy to run.
-            </h2>
-            <p className="text-lg text-gray-500">
-              Team Cross Fit is designed to minimize HR administration while maximizing employee participation.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
+      {/* ── STATS ── */}
+      <section style={{ background: 'var(--forest)', borderTop: '1px solid rgba(245,243,235,0.08)' }}>
+        <div className="max-w-5xl mx-auto px-6 py-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              {
-                step: '01',
-                icon: '🏢',
-                title: 'Set Up Your Organization',
-                desc: 'Create your company account, configure your wellness program structure, and generate Company IDs for your employees. Takes less than 30 minutes.',
-                color: '#16a34a',
-              },
-              {
-                step: '02',
-                icon: '📧',
-                title: 'Invite Your Employees',
-                desc: 'Share Company IDs with employees via email, Slack, or your HRIS. Employees self-enroll and connect their own health apps — no IT involvement needed.',
-                color: '#0891b2',
-              },
-              {
-                step: '03',
-                icon: '📊',
-                title: 'Track & Reward Engagement',
-                desc: 'Monitor aggregate participation, launch challenges, distribute rewards, and understand what\'s working — all from your employer dashboard.',
-                color: '#7c3aed',
-              },
-            ].map(item => (
-              <div key={item.step} className="glass-card p-8">
-                <div className="text-4xl font-black mb-4" style={{ color: `${item.color}20` }}>{item.step}</div>
-                <div className="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl mb-4"
-                  style={{ background: `${item.color}15` }}>
-                  {item.icon}
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
-                <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
+              { value: '$2.39', label: 'ROI per $1 invested' },
+              { value: '70+', label: 'countries supported' },
+              { value: '80+', label: 'languages available' },
+              { value: '94%', label: 'employee satisfaction' },
+            ].map((stat, i) => (
+              <div key={i} className="text-center">
+                <p
+                  className="font-serif mb-1"
+                  style={{ fontSize: '2.25rem', fontWeight: 600, color: 'var(--ivory)', letterSpacing: '-0.02em' }}
+                >
+                  {stat.value}
+                </p>
+                <p className="font-mono-label" style={{ color: 'rgba(245,243,235,0.4)', fontSize: '0.6rem' }}>
+                  {stat.label}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Employer dashboard preview */}
-      <section className="py-20 px-6 relative" style={{ zIndex: 1 }}>
+      {/* ── 4 FEATURES (Origin-inspired) ── */}
+      <section className="py-28 px-6" style={{ background: 'var(--ivory)' }}>
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <p className="font-mono-label mb-6" style={{ color: 'var(--olive)', fontSize: '0.65rem' }}>
+              Why Ballad Tree
+            </p>
+            <h2 className="headline-lg" style={{ color: 'var(--forest)' }}>
+              Built for the way
+              <br />
+              <em className="italic-accent">modern companies work.</em>
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              {
+                label: 'One Platform for Every Employee',
+                body: 'Support every financial journey—budgeting, investing, planning, and more—with a single, unified platform. Ballad Tree meets employees where they are, no matter their income, location, or life stage.',
+              },
+              {
+                label: 'Global Access and Equity',
+                body: 'Offer financial support that scales. Ballad Tree is built to serve teams in 70+ countries and 80+ languages, with culturally relevant guidance and localized experiences for true financial equity.',
+              },
+              {
+                label: 'Flexible Pricing, Proven ROI',
+                body: 'Get financial wellness that works—and works for your budget. Our pricing model scales with your team, delivering up to $2.39 in ROI for every $1 invested.',
+              },
+              {
+                label: 'Dedicated Success Team',
+                body: 'From onboarding to rollout to engagement campaigns, our customer success team is with you every step of the way—ensuring your program drives real adoption and impact.',
+              },
+            ].map((f, i) => (
+              <div key={i} className="card-feature p-8" style={{ minHeight: '280px' }}>
+                <p className="font-mono-label mb-6" style={{ color: 'var(--olive)', fontSize: '0.6rem', lineHeight: 1.5 }}>
+                  {f.label}
+                </p>
+                <p style={{ color: 'var(--charcoal)', fontSize: '0.95rem', lineHeight: 1.75 }}>
+                  {f.body}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── HOW IT WORKS FOR EMPLOYERS ── */}
+      <section className="py-28 px-6" style={{ background: 'var(--white)' }}>
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-20">
+            <p className="font-mono-label mb-6" style={{ color: 'var(--olive)', fontSize: '0.65rem' }}>
+              Simple Rollout
+            </p>
+            <h2 className="headline-lg" style={{ color: 'var(--forest)' }}>
+              Launch in days,
+              <br />
+              <em className="italic-accent">not months.</em>
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                num: '01',
+                title: 'Set Up Your Program',
+                desc: 'Work with our success team to configure your financial wellness program. Choose your benefit tier, set up your company profile, and define your rollout plan.',
+              },
+              {
+                num: '02',
+                title: 'Invite Your Employees',
+                desc: 'Send a simple invite link or integrate with your existing HR systems. Employees sign up in minutes and immediately access their personalized financial dashboard.',
+              },
+              {
+                num: '03',
+                title: 'Track Impact',
+                desc: 'Monitor aggregate engagement, satisfaction scores, and financial wellness trends from your employer dashboard — while individual employee data stays completely private.',
+              },
+            ].map((step, i) => (
+              <div key={step.num}>
+                <p className="font-mono-label mb-4" style={{ color: 'rgba(24,37,27,0.25)', fontSize: '0.65rem' }}>
+                  {step.num}
+                </p>
+                <h3 className="font-serif mb-3" style={{ fontSize: '1.2rem', fontWeight: 600, color: 'var(--forest)' }}>
+                  {step.title}
+                </h3>
+                <p style={{ color: 'rgba(24,37,27,0.6)', fontSize: '0.9rem', lineHeight: 1.75 }}>
+                  {step.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── EMPLOYER DASHBOARD ── */}
+      <section className="py-28 px-6" style={{ background: 'var(--forest)' }}>
         <div className="max-w-5xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-4xl font-bold text-gray-900 tracking-tight mb-6">
-                Everything you need to run a healthy workplace.
+              <p className="font-mono-label mb-6" style={{ color: 'rgba(245,243,235,0.4)', fontSize: '0.65rem' }}>
+                Employer Dashboard
+              </p>
+              <h2 className="headline-lg text-white mb-6">
+                Measure what
+                <br />
+                <em className="italic-accent">actually matters.</em>
               </h2>
-              <div className="space-y-5">
+              <p style={{ color: 'rgba(245,243,235,0.65)', fontSize: '1rem', lineHeight: 1.8, marginBottom: '2.5rem' }}>
+                See aggregate financial wellness trends across your workforce. Understand program engagement, track improvement over time, and demonstrate ROI to leadership — all without ever seeing individual employee data.
+              </p>
+              <div className="space-y-4">
                 {[
-                  { icon: '📊', title: 'Aggregate Engagement Analytics', desc: 'See participation rates, challenge completion, and wellness trends across your organization — without accessing individual health data.' },
-                  { icon: '🏆', title: 'Challenge Management', desc: 'Create and launch step challenges, movement streaks, team competitions, and custom wellness goals in minutes.' },
-                  { icon: '🎁', title: 'Rewards & Recognition', desc: 'Distribute points, perks, and rewards to recognize wellness participation and healthy habits.' },
-                  { icon: '🔐', title: 'Privacy-First Design', desc: 'Employees control their own data. You see what you need to run programs — nothing more.' },
-                  { icon: '📱', title: 'No App to Build', desc: 'Employees use the health apps they already have. Team Cross Fit connects the dots.' },
+                  'Aggregate financial wellness scores',
+                  'Program engagement and adoption rates',
+                  'Goal completion trends',
+                  'Satisfaction and NPS tracking',
+                  'ROI reporting for leadership',
                 ].map(item => (
-                  <div key={item.title} className="flex items-start gap-4">
-                    <span className="text-2xl flex-shrink-0">{item.icon}</span>
-                    <div>
-                      <p className="font-semibold text-gray-900 mb-1">{item.title}</p>
-                      <p className="text-sm text-gray-500">{item.desc}</p>
+                  <div key={item} className="flex items-center gap-3">
+                    <div
+                      className="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0"
+                      style={{ background: 'rgba(245,243,235,0.15)' }}
+                    >
+                      <svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3">
+                        <path d="M5 13l4 4L19 7" />
+                      </svg>
                     </div>
+                    <p style={{ color: 'rgba(245,243,235,0.75)', fontSize: '0.9rem' }}>{item}</p>
                   </div>
                 ))}
               </div>
             </div>
 
             {/* Dashboard mockup */}
-            <div className="glass-card p-6">
+            <div
+              className="rounded-2xl p-6"
+              style={{ background: 'rgba(245,243,235,0.06)', border: '1px solid rgba(245,243,235,0.1)' }}
+            >
               <div className="flex items-center justify-between mb-6">
                 <div>
-                  <p className="text-xs text-gray-400 uppercase tracking-wider font-medium">Employer Dashboard</p>
-                  <p className="text-lg font-bold text-gray-900 mt-0.5">September Overview</p>
+                  <p className="font-mono-label" style={{ color: 'rgba(245,243,235,0.4)', fontSize: '0.6rem' }}>
+                    Employer Dashboard
+                  </p>
+                  <p style={{ color: 'var(--ivory)', fontWeight: 600, marginTop: '0.25rem' }}>Q3 Wellness Overview</p>
                 </div>
-                <span className="px-3 py-1 text-xs font-semibold text-green-700 rounded-full"
-                  style={{ background: 'rgba(134,239,172,0.2)' }}>Live</span>
+                <div
+                  className="px-3 py-1 rounded-full font-mono-label"
+                  style={{ background: 'rgba(126,200,160,0.2)', color: '#7EC8A0', fontSize: '0.6rem' }}
+                >
+                  Live
+                </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-3 mb-4">
+              <div className="grid grid-cols-2 gap-3 mb-6">
                 {[
-                  { label: 'Active Employees', value: '143', icon: '👥', change: '+12%' },
-                  { label: 'Participation Rate', value: '68%', icon: '🏆', change: '+8%' },
-                  { label: 'Total Steps', value: '12.4M', icon: '👟', change: 'This month' },
-                  { label: 'Rewards Given', value: '2,840', icon: '⭐', change: '+340' },
+                  { label: 'Active Employees', value: '847', change: '+12%' },
+                  { label: 'Avg. Financial Score', value: '72', change: '+8 pts' },
+                  { label: 'Goals Set', value: '2,341', change: 'this quarter' },
+                  { label: 'Program Engagement', value: '91%', change: '+5%' },
                 ].map(stat => (
-                  <div key={stat.label} className="p-4 rounded-2xl" style={{ background: 'rgba(0,0,0,0.03)' }}>
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="text-base">{stat.icon}</span>
-                      <p className="text-xs text-gray-400">{stat.label}</p>
-                    </div>
-                    <p className="text-xl font-bold text-gray-900">{stat.value}</p>
-                    <p className="text-xs text-green-600 font-medium mt-0.5">{stat.change}</p>
+                  <div key={stat.label} className="rounded-xl p-4" style={{ background: 'rgba(245,243,235,0.05)' }}>
+                    <p className="font-mono-label mb-2" style={{ color: 'rgba(245,243,235,0.35)', fontSize: '0.55rem' }}>
+                      {stat.label}
+                    </p>
+                    <p style={{ color: 'var(--ivory)', fontSize: '1.5rem', fontWeight: 700, letterSpacing: '-0.02em' }}>
+                      {stat.value}
+                    </p>
+                    <p style={{ color: '#7EC8A0', fontSize: '0.72rem', marginTop: '0.2rem' }}>{stat.change}</p>
                   </div>
                 ))}
               </div>
 
-              <div className="p-4 rounded-2xl" style={{ background: 'rgba(134,239,172,0.1)', border: '1px solid rgba(134,239,172,0.3)' }}>
-                <p className="text-xs text-green-800 font-medium">
-                  🔒 Individual health data is never visible to employers. You see aggregate wellness engagement only.
+              <div
+                className="rounded-xl p-4 flex items-start gap-3"
+                style={{ background: 'rgba(126,200,160,0.1)', border: '1px solid rgba(126,200,160,0.2)' }}
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7EC8A0" strokeWidth="2" className="flex-shrink-0 mt-0.5">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+                <p style={{ color: 'rgba(245,243,235,0.7)', fontSize: '0.75rem', lineHeight: 1.5 }}>
+                  <strong style={{ color: 'var(--ivory)' }}>Privacy protected:</strong> Employers see aggregate wellness trends — never individual financial data.
                 </p>
               </div>
             </div>
@@ -185,73 +249,30 @@ export default function ForEmployersPage() {
         </div>
       </section>
 
-      {/* Use cases */}
-      <section className="py-20 px-6 relative" style={{ zIndex: 1 }}>
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 tracking-tight mb-4">
-              Built for every type of workplace.
-            </h2>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              {
-                icon: '🏢',
-                title: 'Corporate & Enterprise',
-                desc: 'Run wellness programs across departments, locations, and remote teams. Segment by team, tenure, or role.',
-                features: ['Multi-department challenges', 'Location-based programs', 'Manager-led recognition', 'Advanced reporting'],
-              },
-              {
-                icon: '🌱',
-                title: 'Mid-Size Companies',
-                desc: 'Build a wellness culture from the ground up. Easy to launch, easy to manage, high employee adoption.',
-                features: ['Quick setup', 'Peer-to-peer challenges', 'Flexible reward options', 'Participation tracking'],
-              },
-              {
-                icon: '💻',
-                title: 'Remote & Hybrid Teams',
-                desc: 'Keep distributed teams connected through shared wellness goals and team challenges.',
-                features: ['Virtual team challenges', 'Async participation', 'Digital recognition', 'Cross-location leaderboards'],
-              },
-            ].map(item => (
-              <div key={item.title} className="glass-card p-8">
-                <span className="text-3xl mb-4 block">{item.icon}</span>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
-                <p className="text-sm text-gray-500 mb-5">{item.desc}</p>
-                <ul className="space-y-2">
-                  {item.features.map(f => (
-                    <li key={f} className="flex items-center gap-2 text-sm text-gray-600">
-                      <div className="w-1.5 h-1.5 rounded-full bg-green-500 flex-shrink-0" />
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-20 px-6 relative" style={{ zIndex: 1 }}>
-        <div className="max-w-3xl mx-auto">
-          <div className="glass-card p-12 text-center"
-            style={{ background: 'linear-gradient(135deg, rgba(240,253,244,0.9), rgba(240,249,255,0.9))' }}>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Ready to launch your wellness program?</h2>
-            <p className="text-lg text-gray-500 mb-8">
-              Talk to our team about setting up Team Cross Fit for your organization. We&apos;ll help you configure your program, generate Company IDs, and get employees enrolled.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link href="/contact"
-                className="px-8 py-4 text-base font-semibold text-white rounded-2xl shadow-xl hover:opacity-90 transition-all"
-                style={{ background: 'linear-gradient(135deg, #16a34a, #059669)' }}>
-                Talk to Our Team
-              </Link>
-              <Link href="/how-it-works"
-                className="px-8 py-4 text-base font-semibold text-gray-700 rounded-2xl glass-button">
-                See How It Works
-              </Link>
-            </div>
+      {/* ── CTA ── */}
+      <section className="py-28 px-6" style={{ background: 'var(--ivory)' }}>
+        <div className="max-w-3xl mx-auto text-center">
+          <p className="font-mono-label mb-8" style={{ color: 'var(--olive)', fontSize: '0.65rem' }}>
+            Get Started
+          </p>
+          <h2 className="headline-lg mb-8" style={{ color: 'var(--forest)' }}>
+            Build a financially
+            <br />
+            <em className="italic-accent">resilient workforce.</em>
+          </h2>
+          <p style={{ color: 'rgba(24,37,27,0.55)', fontSize: '1rem', lineHeight: 1.8, maxWidth: '420px', margin: '0 auto 2.5rem' }}>
+            Join companies delivering measurable financial wellness impact with Ballad Tree.
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <Link href="/signup" className="btn-forest">
+              Get Started
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </Link>
+            <Link href="/product" className="btn-outline" style={{ color: 'var(--forest)', borderColor: 'rgba(24,37,27,0.3)' }}>
+              See the Product
+            </Link>
           </div>
         </div>
       </section>
