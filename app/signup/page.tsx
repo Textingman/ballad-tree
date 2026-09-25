@@ -7,7 +7,7 @@ import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 
 export default function SignupPage() {
-  const [formData, setFormData] = useState({ name: '', email: '', company: '', employerId: '', phone: '', message: '' });
+  const [formData, setFormData] = useState({ name: '', email: '', employerId: '', phone: '' });
   const [accountNotifications, setAccountNotifications] = useState(false);
   const [customerCare, setCustomerCare] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -162,29 +162,6 @@ export default function SignupPage() {
                     />
                   </div>
 
-                  {/* Company */}
-                  <div>
-                    <label className="font-mono-label block mb-2" style={{ color: 'var(--olive)', fontSize: '0.6rem' }}>
-                      Company Name *
-                    </label>
-                    <input
-                      type="text"
-                      name="company"
-                      required
-                      value={formData.company}
-                      onChange={handleChange}
-                      placeholder="Acme Corp"
-                      className="w-full px-4 py-3 rounded-xl text-sm"
-                      style={{
-                        background: 'rgba(24,37,27,0.04)',
-                        border: '1px solid rgba(24,37,27,0.12)',
-                        color: 'var(--charcoal)',
-                        outline: 'none',
-                        fontFamily: 'Inter, sans-serif',
-                      }}
-                    />
-                  </div>
-
                   {/* Employer ID */}
                   <div>
                     <label className="font-mono-label block mb-2" style={{ color: 'var(--olive)', fontSize: '0.6rem' }}>
@@ -224,28 +201,6 @@ export default function SignupPage() {
                       onChange={handleChange}
                       placeholder="(555) 555-5555"
                       className="w-full px-4 py-3 rounded-xl text-sm"
-                      style={{
-                        background: 'rgba(24,37,27,0.04)',
-                        border: '1px solid rgba(24,37,27,0.12)',
-                        color: 'var(--charcoal)',
-                        outline: 'none',
-                        fontFamily: 'Inter, sans-serif',
-                      }}
-                    />
-                  </div>
-
-                  {/* Message */}
-                  <div>
-                    <label className="font-mono-label block mb-2" style={{ color: 'var(--olive)', fontSize: '0.6rem' }}>
-                      How can we help?
-                    </label>
-                    <textarea
-                      name="message"
-                      rows={3}
-                      value={formData.message}
-                      onChange={handleChange}
-                      placeholder="Tell us about your team and what you're looking for..."
-                      className="w-full px-4 py-3 rounded-xl text-sm resize-none"
                       style={{
                         background: 'rgba(24,37,27,0.04)',
                         border: '1px solid rgba(24,37,27,0.12)',
