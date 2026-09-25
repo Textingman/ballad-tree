@@ -7,8 +7,6 @@ import Footer from '../components/Footer';
 
 export default function TalkToSalesPage() {
   const [formData, setFormData] = useState({ name: '', email: '', company: '', teamSize: '', phone: '', message: '' });
-  const [accountNotifications, setAccountNotifications] = useState(false);
-  const [customerCare, setCustomerCare] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success'>('idle');
 
@@ -278,36 +276,6 @@ export default function TalkToSalesPage() {
                       {' '}and{' '}
                       <Link href="/terms" style={{ color: 'var(--olive)', textDecoration: 'underline' }}>Terms of Service</Link>. *
                     </label>
-                  </div>
-
-                  {/* SMS Consent */}
-                  <div className="space-y-3">
-                    <div className="flex items-start gap-3">
-                      <input
-                        type="checkbox"
-                        id="accountNotifications"
-                        checked={accountNotifications}
-                        onChange={e => setAccountNotifications(e.target.checked)}
-                        className="mt-1 w-4 h-4 rounded flex-shrink-0"
-                        style={{ accentColor: 'var(--olive)' }}
-                      />
-                      <label htmlFor="accountNotifications" style={{ fontSize: '0.72rem', color: 'rgba(24,37,27,0.45)', lineHeight: 1.6 }}>
-                        By checking this box, I agree to receive Transactional Account Notification SMS messages from Ballad Tree at the phone number provided. I understand I may opt out at any time by replying STOP. Reply HELP for help. Message and data rates may apply. Message frequency varies. Opting in is optional and not required to submit this form. Consent is not required as a condition of purchasing any products or services.
-                      </label>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <input
-                        type="checkbox"
-                        id="customerCare"
-                        checked={customerCare}
-                        onChange={e => setCustomerCare(e.target.checked)}
-                        className="mt-1 w-4 h-4 rounded flex-shrink-0"
-                        style={{ accentColor: 'var(--olive)' }}
-                      />
-                      <label htmlFor="customerCare" style={{ fontSize: '0.72rem', color: 'rgba(24,37,27,0.45)', lineHeight: 1.6 }}>
-                        By checking this box, I agree to receive Promotional Marketing SMS messages from Ballad Tree at the phone number provided, including special offers and exclusive updates. I understand I may opt out at any time by replying STOP. Reply HELP for help. Message and data rates may apply. Message frequency varies. Opting in is optional and not required to submit this form. Consent is not required as a condition of purchasing any products or services.
-                      </label>
-                    </div>
                   </div>
 
                   {/* Submit */}
