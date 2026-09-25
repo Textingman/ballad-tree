@@ -7,7 +7,7 @@ import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 
 export default function SignupPage() {
-  const [formData, setFormData] = useState({ name: '', email: '', company: '', phone: '', message: '' });
+  const [formData, setFormData] = useState({ name: '', email: '', company: '', employerId: '', phone: '', message: '' });
   const [accountNotifications, setAccountNotifications] = useState(false);
   const [customerCare, setCustomerCare] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -183,6 +183,32 @@ export default function SignupPage() {
                         fontFamily: 'Inter, sans-serif',
                       }}
                     />
+                  </div>
+
+                  {/* Employer ID */}
+                  <div>
+                    <label className="font-mono-label block mb-2" style={{ color: 'var(--olive)', fontSize: '0.6rem' }}>
+                      Employer ID *
+                    </label>
+                    <input
+                      type="text"
+                      name="employerId"
+                      required
+                      value={formData.employerId}
+                      onChange={handleChange}
+                      placeholder="Provided by your employer"
+                      className="w-full px-4 py-3 rounded-xl text-sm"
+                      style={{
+                        background: 'rgba(24,37,27,0.04)',
+                        border: '1px solid rgba(24,37,27,0.12)',
+                        color: 'var(--charcoal)',
+                        outline: 'none',
+                        fontFamily: 'Inter, sans-serif',
+                      }}
+                    />
+                    <p style={{ fontSize: '0.7rem', color: 'rgba(24,37,27,0.4)', marginTop: '0.4rem' }}>
+                      Your Employer ID is provided by your HR or benefits team.
+                    </p>
                   </div>
 
                   {/* Phone */}
