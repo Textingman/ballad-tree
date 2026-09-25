@@ -1,40 +1,65 @@
 'use client';
 
-import Link from 'next/link';
-import Image from 'next/image';
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const navLinks = [
-    { href: '/product', label: 'Product' },
-    { href: '/how-it-works', label: 'How It Works' },
-    { href: '/integrations', label: 'Integrations' },
-    { href: '/challenges', label: 'Challenges' },
-    { href: '/for-employers', label: 'For HR Teams' },
-  ];
-
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'glass-nav py-3' : 'py-5 bg-transparent'}`}>
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+    <header className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-5 px-4">
+      <nav
+        className="nav-floating w-full max-w-5xl px-6 py-3 flex items-center justify-between"
+        style={{
+          opacity: scrolled ? 1 : 0.96,
+          transition: 'opacity 0.3s ease',
+        }}
+      >
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
-          <Image src="/logo.png" alt="Team Cross Fit" width={200} height={60} className="h-14 w-auto" />
+        <Link href="/" className="flex items-center gap-2 group">
+          <div
+            className="w-7 h-7 rounded-full flex items-center justify-center"
+            style={{ background: 'rgba(255,255,255,0.2)', border: '1px solid rgba(255,255,255,0.3)' }}
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2C8 2 4 6 4 10c0 5 8 12 8 12s8-7 8-12c0-4-4-8-8-8z" fill="white" opacity="0.9" />
+              <circle cx="12" cy="10" r="3" fill="white" opacity="0.6" />
+            </svg>
+          </div>
+          <span
+            className="font-mono-label text-white"
+            style={{ fontSize: '0.75rem', letterSpacing: '0.08em' }}
+          >
+            Ballad Tree
+          </span>
         </Link>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-1">
-          {navLinks.map(item => (
-            <Link key={item.href} href={item.href}
-              className="px-3 py-2 text-sm text-gray-600 hover:text-gray-900 rounded-lg hover:bg-black/5 transition-all">
+          {[
+            { label: 'Product', href: '/product' },
+            { label: 'For Employers', href: '/for-employers' },
+            { label: 'How It Works', href: '/how-it-works' },
+          ].map(item => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="font-mono-label px-4 py-2 rounded-full transition-all"
+              style={{
+                color: 'rgba(255,255,255,0.75)',
+                fontSize: '0.65rem',
+                letterSpacing: '0.1em',
+              }}
+              onMouseEnter={e => (e.currentTarget.style.color = 'white')}
+              onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.75)')}
+            >
               {item.label}
             </Link>
           ))}
@@ -42,36 +67,80 @@ export default function Nav() {
 
         {/* CTA */}
         <div className="flex items-center gap-3">
-          <Link href="/signup"
-            className="hidden md:block px-5 py-2.5 text-sm font-medium text-white rounded-xl transition-all hover:opacity-90 hover:-translate-y-0.5 shadow-lg"
-            style={{ background: 'linear-gradient(135deg, #16a34a, #059669)' }}>
+          <Link
+            href="/signup"
+            className="hidden md:inline-flex btn-primary"
+            style={{ fontSize: '0.65rem' }}
+          >
             Get Started
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
           </Link>
-          <button className="md:hidden p-2 rounded-lg hover:bg-black/5" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <line x1="3" y1="6" x2="21" y2="6" /><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="18" x2="21" y2="18" />
+
+          {/* Mobile hamburger */}
+          <button
+            className="md:hidden p-2 rounded-full"
+            style={{ background: 'rgba(255,255,255,0.1)' }}
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle menu"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
+              {mobileOpen ? (
+                <>
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </>
+              ) : (
+                <>
+                  <line x1="3" y1="7" x2="21" y2="7" />
+                  <line x1="3" y1="12" x2="21" y2="12" />
+                  <line x1="3" y1="17" x2="21" y2="17" />
+                </>
+              )}
             </svg>
           </button>
         </div>
-      </div>
+      </nav>
 
       {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="md:hidden glass-nav mt-2 mx-4 rounded-2xl p-4">
-          {navLinks.map(item => (
-            <Link key={item.href} href={item.href}
-              className="block px-3 py-2.5 text-sm text-gray-700 hover:text-gray-900 rounded-lg hover:bg-black/5"
-              onClick={() => setMobileMenuOpen(false)}>
+      {mobileOpen && (
+        <div
+          className="absolute top-20 left-4 right-4 rounded-2xl p-6 md:hidden"
+          style={{
+            background: 'rgba(24, 37, 27, 0.95)',
+            backdropFilter: 'blur(20px)',
+            border: '1px solid rgba(255,255,255,0.1)',
+          }}
+        >
+          {[
+            { label: 'Product', href: '/product' },
+            { label: 'For Employers', href: '/for-employers' },
+            { label: 'How It Works', href: '/how-it-works' },
+          ].map(item => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="block font-mono-label py-3 border-b"
+              style={{
+                color: 'rgba(255,255,255,0.7)',
+                borderColor: 'rgba(255,255,255,0.08)',
+                fontSize: '0.7rem',
+              }}
+              onClick={() => setMobileOpen(false)}
+            >
               {item.label}
             </Link>
           ))}
-          <Link href="/signup"
-            className="block w-full mt-3 px-5 py-3 text-sm font-medium text-white rounded-xl text-center"
-            style={{ background: 'linear-gradient(135deg, #16a34a, #059669)' }}>
-            Get Started
+          <Link
+            href="/signup"
+            className="btn-primary mt-4 w-full justify-center"
+            onClick={() => setMobileOpen(false)}
+          >
+            Get Started →
           </Link>
         </div>
       )}
-    </nav>
+    </header>
   );
 }

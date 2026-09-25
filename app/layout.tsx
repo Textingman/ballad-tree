@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Ballad Tree",
-  description: "Ballad Tree — balladtree.com",
-  keywords: "ballad tree, balladtree",
+  title: "Ballad Tree — Financial Wellness for Every Employee",
+  description: "Ballad Tree is an AI-powered financial wellness platform that helps companies support their employees' financial security, confidence, and long-term wellbeing.",
+  keywords: "employee financial wellness, financial wellbeing, workplace financial benefits, AI financial advisor, employee benefits, financial security",
   openGraph: {
-    title: "Ballad Tree",
-    description: "Ballad Tree — balladtree.com",
+    title: "Ballad Tree — Financial Wellness for Every Employee",
+    description: "AI-powered financial wellness that meets employees where they are. Budgeting, planning, investing — one platform for every financial journey.",
     siteName: "Ballad Tree",
     locale: "en_US",
     type: "website",
