@@ -41,7 +41,7 @@ function StepIndicator({ current, total }: { current: number; total: number }) {
 
 export default function SignupPage() {
   const [step, setStep] = useState(0);
-  const [formData, setFormData] = useState({ name: '', email: '', employerId: '', phone: '' });
+  const [formData, setFormData] = useState({ name: '', email: '', employerId: '', phone: '', confirmPhone: '' });
   const [accountNotifications, setAccountNotifications] = useState(false);
   const [customerCare, setCustomerCare] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -271,27 +271,6 @@ export default function SignupPage() {
                           Find your Employer ID in your onboarding email or ask your HR team.
                         </p>
                       </div>
-                      <div>
-                        <label className="font-mono-label block mb-2" style={{ color: 'var(--olive)', fontSize: '0.6rem' }}>
-                          Phone Number *
-                        </label>
-                        <input
-                          type="tel"
-                          name="phone"
-                          required
-                          value={formData.phone}
-                          onChange={handleChange}
-                          placeholder="(555) 555-5555"
-                          className="w-full px-4 py-3 rounded-xl text-sm"
-                          style={{
-                            background: 'rgba(24,37,27,0.04)',
-                            border: '1px solid rgba(24,37,27,0.12)',
-                            color: 'var(--charcoal)',
-                            outline: 'none',
-                            fontFamily: 'Inter, sans-serif',
-                          }}
-                        />
-                      </div>
                       <div className="flex gap-3">
                         <button
                           type="button"
@@ -309,9 +288,9 @@ export default function SignupPage() {
                         </button>
                         <button
                           type="button"
-                          onClick={() => formData.employerId && formData.phone && setStep(2)}
+                          onClick={() => formData.employerId && setStep(2)}
                           className="btn-forest flex-1 justify-center"
-                          style={{ opacity: formData.employerId && formData.phone ? 1 : 0.5 }}
+                          style={{ opacity: formData.employerId ? 1 : 0.5 }}
                         >
                           Continue
                           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -350,13 +329,35 @@ export default function SignupPage() {
                         { label: 'Name', value: formData.name },
                         { label: 'Email', value: formData.email },
                         { label: 'Employer ID', value: formData.employerId },
-                        { label: 'Phone', value: formData.phone },
                       ].map(item => (
                         <div key={item.label} className="flex justify-between items-center">
                           <span className="font-mono-label" style={{ color: 'rgba(24,37,27,0.4)', fontSize: '0.6rem' }}>{item.label}</span>
                           <span style={{ color: 'var(--charcoal)', fontSize: '0.85rem', fontWeight: 500 }}>{item.value}</span>
                         </div>
                       ))}
+                    </div>
+
+                    {/* Phone for SMS */}
+                    <div className="mb-4">
+                      <label className="font-mono-label block mb-2" style={{ color: 'var(--olive)', fontSize: '0.6rem' }}>
+                        Phone Number *
+                      </label>
+                      <input
+                        type="tel"
+                        name="phone"
+                        required
+                        value={formData.phone}
+                        onChange={handleChange}
+                        placeholder="(555) 555-5555"
+                        className="w-full px-4 py-3 rounded-xl text-sm"
+                        style={{
+                          background: 'rgba(24,37,27,0.04)',
+                          border: '1px solid rgba(24,37,27,0.12)',
+                          color: 'var(--charcoal)',
+                          outline: 'none',
+                          fontFamily: 'Inter, sans-serif',
+                        }}
+                      />
                     </div>
 
                     {/* Terms */}
