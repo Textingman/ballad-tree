@@ -35,26 +35,58 @@ export default function ForEmployersPage() {
         </div>
       </section>
 
-      {/* ── STATS ── */}
+      {/* ── PILLARS ── */}
       <section style={{ background: 'var(--forest)', borderTop: '1px solid rgba(245,243,235,0.08)' }}>
-        <div className="max-w-5xl mx-auto px-6 py-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="max-w-5xl mx-auto px-6 py-14">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { value: '$2.39', label: 'ROI per $1 invested' },
-              { value: '70+', label: 'countries supported' },
-              { value: '80+', label: 'languages available' },
-              { value: '94%', label: 'employee satisfaction' },
-            ].map((stat, i) => (
-              <div key={i} className="text-center">
-                <p
-                  className="font-serif mb-1"
-                  style={{ fontSize: '2.25rem', fontWeight: 600, color: 'var(--ivory)', letterSpacing: '-0.02em' }}
+              {
+                icon: (
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  </svg>
+                ),
+                title: 'Privacy by design',
+                desc: 'Employers see only aggregate wellness trends — never individual employee financial data.',
+              },
+              {
+                icon: (
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                    <circle cx="9" cy="7" r="4" />
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                  </svg>
+                ),
+                title: 'Built for every team',
+                desc: 'From 10 employees to 10,000 — Ballad Tree scales with your organization and adapts to every workforce.',
+              },
+              {
+                icon: (
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
+                    <polyline points="16 7 22 7 22 13" />
+                  </svg>
+                ),
+                title: 'Measurable impact',
+                desc: 'Track engagement, financial wellness scores, and program adoption — with clear reporting for leadership.',
+              },
+            ].map((pillar, i) => (
+              <div key={i} className="flex items-start gap-4">
+                <div
+                  className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
+                  style={{ background: 'rgba(245,243,235,0.1)', color: 'rgba(245,243,235,0.7)' }}
                 >
-                  {stat.value}
-                </p>
-                <p className="font-mono-label" style={{ color: 'rgba(245,243,235,0.4)', fontSize: '0.6rem' }}>
-                  {stat.label}
-                </p>
+                  {pillar.icon}
+                </div>
+                <div>
+                  <p style={{ color: 'var(--ivory)', fontWeight: 600, fontSize: '0.9rem', marginBottom: '0.35rem' }}>
+                    {pillar.title}
+                  </p>
+                  <p style={{ color: 'rgba(245,243,235,0.5)', fontSize: '0.82rem', lineHeight: 1.6 }}>
+                    {pillar.desc}
+                  </p>
+                </div>
               </div>
             ))}
           </div>

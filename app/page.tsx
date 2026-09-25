@@ -254,26 +254,55 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── STATS BAR ── */}
+      {/* ── PILLARS BAR ── */}
       <section style={{ background: 'var(--forest)', borderTop: '1px solid rgba(245,243,235,0.08)' }}>
-        <div className="max-w-5xl mx-auto px-6 py-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="max-w-5xl mx-auto px-6 py-14">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { value: 2.39, prefix: '$', suffix: ' ROI', label: 'per $1 invested' },
-              { value: 70, suffix: '+', label: 'countries supported' },
-              { value: 80, suffix: '+', label: 'languages available' },
-              { value: 94, suffix: '%', label: 'employee satisfaction' },
-            ].map((stat, i) => (
-              <div key={i} className="text-center">
-                <p
-                  className="font-serif mb-1"
-                  style={{ fontSize: '2.25rem', fontWeight: 600, color: 'var(--ivory)', letterSpacing: '-0.02em' }}
+              {
+                icon: (
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  </svg>
+                ),
+                title: 'Privacy by design',
+                desc: 'Employees control their data. Employers see only aggregate trends — never individual finances.',
+              },
+              {
+                icon: (
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 5v6m0 4h.01" />
+                  </svg>
+                ),
+                title: 'AI that actually helps',
+                desc: 'Personalized guidance based on each employee\'s real financial situation — not generic advice.',
+              },
+              {
+                icon: (
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
+                    <polyline points="16 7 22 7 22 13" />
+                  </svg>
+                ),
+                title: 'Built for every employee',
+                desc: 'From entry-level to executive — Ballad Tree meets employees where they are, at every income and life stage.',
+              },
+            ].map((pillar, i) => (
+              <div key={i} className="flex items-start gap-4">
+                <div
+                  className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
+                  style={{ background: 'rgba(245,243,235,0.1)', color: 'rgba(245,243,235,0.7)' }}
                 >
-                  <Counter target={stat.value} prefix={stat.prefix} suffix={stat.suffix} />
-                </p>
-                <p className="font-mono-label" style={{ color: 'rgba(245,243,235,0.4)', fontSize: '0.6rem' }}>
-                  {stat.label}
-                </p>
+                  {pillar.icon}
+                </div>
+                <div>
+                  <p style={{ color: 'var(--ivory)', fontWeight: 600, fontSize: '0.9rem', marginBottom: '0.35rem' }}>
+                    {pillar.title}
+                  </p>
+                  <p style={{ color: 'rgba(245,243,235,0.5)', fontSize: '0.82rem', lineHeight: 1.6 }}>
+                    {pillar.desc}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
