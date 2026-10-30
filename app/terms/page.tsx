@@ -77,7 +77,7 @@ export default function TermsPage() {
                 To access the Service, you must create an account by providing accurate and complete information, including your name, work email address, Employer ID, and mobile phone number (if opting into SMS). You are responsible for maintaining the confidentiality of your account credentials and for all activity that occurs under your account.
               </p>
               <p>
-                You agree to notify us immediately at <a href="mailto:hello@balladtree.com" style={{ color: 'var(--olive)', textDecoration: 'underline' }}>hello@balladtree.com</a> if you suspect unauthorized access to your account.
+                You agree to notify us immediately at <a href="mailto:support@balladtree.com" style={{ color: 'var(--olive)', textDecoration: 'underline' }}>support@balladtree.com</a> if you suspect unauthorized access to your account.
               </p>
             </div>
 
@@ -116,7 +116,7 @@ export default function TermsPage() {
                 <div>
                   <p className="font-mono-label mb-2" style={{ color: 'var(--olive)', fontSize: '0.6rem' }}>Help</p>
                   <p>
-                    Reply <strong>HELP</strong> to any message for assistance, or contact us at <a href="mailto:hello@balladtree.com" style={{ color: 'var(--olive)', textDecoration: 'underline' }}>hello@balladtree.com</a>.
+                    Reply <strong>HELP</strong> to any message for assistance, or contact us at <a href="mailto:support@balladtree.com" style={{ color: 'var(--olive)', textDecoration: 'underline' }}>support@balladtree.com</a>.
                   </p>
                 </div>
 
@@ -190,7 +190,7 @@ export default function TermsPage() {
                 8. Termination
               </h2>
               <p>
-                We reserve the right to suspend or terminate your account at any time for violation of these Terms or at the request of your employer. You may also delete your account at any time by contacting us at <a href="mailto:hello@balladtree.com" style={{ color: 'var(--olive)', textDecoration: 'underline' }}>hello@balladtree.com</a>.
+                We reserve the right to suspend or terminate your account at any time for violation of these Terms or at the request of your employer. You may also delete your account at any time by contacting us at <a href="mailto:support@balladtree.com" style={{ color: 'var(--olive)', textDecoration: 'underline' }}>support@balladtree.com</a>.
               </p>
             </div>
 
@@ -224,7 +224,7 @@ export default function TermsPage() {
               </p>
               <div className="mt-3 space-y-1">
                 <p><strong>Ballad Tree</strong></p>
-                <p>Email: <a href="mailto:hello@balladtree.com" style={{ color: 'var(--olive)', textDecoration: 'underline' }}>hello@balladtree.com</a></p>
+                <p>Email: <a href="mailto:support@balladtree.com" style={{ color: 'var(--olive)', textDecoration: 'underline' }}>support@balladtree.com</a></p>
                 <p>Website: <a href="https://balladtree.com" style={{ color: 'var(--olive)', textDecoration: 'underline' }}>balladtree.com</a></p>
               </div>
             </div>

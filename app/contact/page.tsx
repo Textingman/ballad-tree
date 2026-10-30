@@ -204,10 +204,10 @@ export default function ContactPage() {
                     Email
                   </p>
                   <a
-                    href="mailto:hello@balladtree.com"
+                    href="mailto:support@balladtree.com"
                     style={{ color: 'var(--forest)', fontWeight: 600, fontSize: '0.95rem' }}
                   >
-                    hello@balladtree.com
+                    support@balladtree.com
                   </a>
                   <p style={{ color: 'rgba(24,37,27,0.45)', fontSize: '0.82rem', marginTop: '0.3rem' }}>
                     Response within 1–2 business days

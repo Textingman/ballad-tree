@@ -101,7 +101,7 @@ export default function PrivacyPage() {
                 <div>
                   <p className="font-mono-label mb-2" style={{ color: 'var(--olive)', fontSize: '0.6rem' }}>Help</p>
                   <p>
-                    Reply <strong>HELP</strong> to any message for assistance, or contact us at <a href="mailto:hello@balladtree.com" style={{ color: 'var(--olive)', textDecoration: 'underline' }}>hello@balladtree.com</a>.
+                    Reply <strong>HELP</strong> to any message for assistance, or contact us at <a href="mailto:support@balladtree.com" style={{ color: 'var(--olive)', textDecoration: 'underline' }}>support@balladtree.com</a>.
                   </p>
                 </div>
 
@@ -180,7 +180,7 @@ export default function PrivacyPage() {
                 <li>Disconnect financial accounts you have connected to the platform</li>
               </ul>
               <p className="mt-3">
-                To exercise any of these rights, contact us at <a href="mailto:hello@balladtree.com" style={{ color: 'var(--olive)', textDecoration: 'underline' }}>hello@balladtree.com</a>.
+                To exercise any of these rights, contact us at <a href="mailto:support@balladtree.com" style={{ color: 'var(--olive)', textDecoration: 'underline' }}>support@balladtree.com</a>.
               </p>
             </div>
 
@@ -194,7 +194,7 @@ export default function PrivacyPage() {
               </p>
               <div className="mt-3 space-y-1">
                 <p><strong>Ballad Tree</strong></p>
-                <p>Email: <a href="mailto:hello@balladtree.com" style={{ color: 'var(--olive)', textDecoration: 'underline' }}>hello@balladtree.com</a></p>
+                <p>Email: <a href="mailto:support@balladtree.com" style={{ color: 'var(--olive)', textDecoration: 'underline' }}>support@balladtree.com</a></p>
                 <p>Website: <a href="https://balladtree.com" style={{ color: 'var(--olive)', textDecoration: 'underline' }}>balladtree.com</a></p>
               </div>
             </div>
