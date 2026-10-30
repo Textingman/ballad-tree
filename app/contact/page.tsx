@@ -214,6 +214,29 @@ export default function ContactPage() {
                   </p>
                 </div>
 
+                {/* Phone */}
+                <div>
+                  <p className="font-mono-label mb-2" style={{ color: 'rgba(24,37,27,0.35)', fontSize: '0.6rem' }}>
+                    Phone
+                  </p>
+                  <a
+                    href="tel:+13022082561"
+                    style={{ color: 'var(--forest)', fontWeight: 600, fontSize: '0.95rem' }}
+                  >
+                    (302) 208-2561
+                  </a>
+                </div>
+
+                {/* Address */}
+                <div>
+                  <p className="font-mono-label mb-2" style={{ color: 'rgba(24,37,27,0.35)', fontSize: '0.6rem' }}>
+                    Address
+                  </p>
+                  <p style={{ color: 'var(--charcoal)', fontSize: '0.9rem', lineHeight: 1.6 }}>
+                    3301 Lancaster Pike Ste 1A PMB 1014<br />Wilmington, DE 19805<br />United States
+                  </p>
+                </div>
+
                 {/* SMS Support */}
                 <div>
                   <p className="font-mono-label mb-2" style={{ color: 'rgba(24,37,27,0.35)', fontSize: '0.6rem' }}>
